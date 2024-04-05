@@ -15,15 +15,11 @@ use Mantle\Support\Service_Provider;
 class Log_Service_Provider extends Service_Provider {
 	/**
 	 * Register the commands.
-	 *
-	 * @return void
 	 */
-	public function register() {
+	public function register(): void {
 		$this->app->singleton(
 			'log',
-			function( $app ) {
-				return new Log_Manager( $app, $app['events'] );
-			}
+			fn ( $app) => new Log_Manager( $app, $app['events'] )
 		);
 	}
 }
